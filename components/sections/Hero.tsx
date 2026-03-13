@@ -20,7 +20,7 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-6xl font-bold leading-[1.1] text-white tracking-tight mb-6">
-              Modern Practice <br />
+              Modern Abacus Practice <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300">
                 Revolution.
               </span>
@@ -55,13 +55,13 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start pt-4"
+            className="flex flex-col sm:flex-row gap-4 w-full justify-center lg:justify-start pt-4"
           >
-            <a href="https://teacher.boltabacus.com/teacher/auth">
-              <InteractiveHoverButton text="Login as Teacher" className="w-48 bg-gold-500 text-black border-gold-500 hover:bg-gold-400 font-bold" />
+            <a href="https://teacher.boltabacus.com/teacher/auth" className="w-full sm:w-auto">
+              <InteractiveHoverButton text="Login as Teacher" className="w-full sm:w-48 bg-gold-500 text-black border-gold-500 hover:bg-gold-400 font-bold" />
             </a>
-            <a href="https://student.boltabacus.com/student/auth">
-              <InteractiveHoverButton text="Login as Student" className="w-48 border-white/20 hover:border-gold-500/50 font-bold" />
+            <a href="https://student.boltabacus.com/student/auth" className="w-full sm:w-auto">
+              <InteractiveHoverButton text="Login as Student" className="w-full sm:w-48 border-white/20 hover:border-gold-500/50 font-bold" />
             </a>
           </motion.div>
         </div>

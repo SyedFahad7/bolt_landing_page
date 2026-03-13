@@ -126,10 +126,10 @@ export const Problem: React.FC = () => {
             >
               {/* Header */}
               <div
-                className="flex items-center justify-between px-8 py-5"
+                className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 px-6 md:px-8 py-5"
                 style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}
               >
-                <div>
+                <div className="flex items-center">
                   <motion.span
                     animate={{ opacity: [1, 0.3, 1] }}
                     transition={{ duration: 1.8, repeat: Infinity }}
@@ -137,7 +137,7 @@ export const Problem: React.FC = () => {
                     style={{ background: '#F59E0B', boxShadow: '0 0 6px #F59E0B' }}
                   />
                   <span
-                    className="text-[10px] font-bold tracking-[0.25em] uppercase"
+                    className="text-[9px] md:text-[10px] font-bold tracking-[0.2em] md:tracking-[0.25em] uppercase"
                     style={{ color: 'rgba(245,158,11,0.6)' }}
                   >
                     Student Practice Engagement  ·  4-Week Study
@@ -145,7 +145,7 @@ export const Problem: React.FC = () => {
                 </div>
 
                 {/* Legend */}
-                <div className="flex items-center gap-6">
+                <div className="flex flex-wrap items-center gap-4 md:gap-6 mt-1 md:mt-0">
                   {[
                     { color: '#F87171', label: 'No Platform' },
                     { color: '#64748B', label: 'Traditional' },
@@ -170,12 +170,12 @@ export const Problem: React.FC = () => {
               </div>
 
               {/* SVG Chart */}
-              <div className="px-6 pb-4 pt-2" style={{ cursor: 'crosshair' }}>
+              <div className="px-6 pb-4 pt-2 overflow-x-auto scrollbar-hide" style={{ cursor: 'crosshair', WebkitOverflowScrolling: 'touch' }}>
                 <svg
                   ref={svgRef}
                   viewBox={`0 0 ${VW} ${VH}`}
                   preserveAspectRatio="none"
-                  className="w-full"
+                  className="w-full min-w-[750px] lg:min-w-full"
                   style={{ height: 280, overflow: 'visible' }}
                   onMouseMove={handleMove}
                   onMouseLeave={handleLeave}

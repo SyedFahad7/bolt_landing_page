@@ -163,7 +163,7 @@ export const Competitions: React.FC = () => {
             <motion.h2
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               transition={{ delay: 0.05 }}
-              className="text-5xl md:text-6xl font-bold text-white mb-6 leading-[1.08]"
+              className="text-4xl md:text-6xl font-bold text-white mb-6 leading-[1.08]"
             >
               Practice Alone is Boring.{' '}
               <br />

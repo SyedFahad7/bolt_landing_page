@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Layers, Users, Gamepad2, Trophy, BarChart3, Globe, Zap, Settings, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const Solution: React.FC = () => {
   const [hoverSide, setHoverSide] = useState<'student' | 'teacher' | null>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Constants for animations based on screen size
   const studentWidth = hoverSide === 'student' ? '70%' : hoverSide === 'teacher' ? '30%' : '50%';
@@ -15,12 +23,12 @@ export const Solution: React.FC = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-gold-600/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 px-2">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight"
+            className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
           >
             Bolt Abacus is a <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">Practice Platform</span> <br className="hidden md:block"></br>
             <span className="text-gold-500">Not Just Software</span>
@@ -42,19 +50,19 @@ export const Solution: React.FC = () => {
           {/* Student Journey Side */}
           <motion.div
             layout
-            onMouseEnter={() => setHoverSide('student')}
-            onMouseLeave={() => setHoverSide(null)}
-            animate={{ width: typeof window !== 'undefined' && window.innerWidth >= 1024 ? studentWidth : '100%' }}
+            onMouseEnter={() => isDesktop && setHoverSide('student')}
+            onMouseLeave={() => isDesktop && setHoverSide(null)}
+            animate={{ width: isDesktop ? studentWidth : '100%' }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="bg-neutral-900/50 rounded-3xl p-2 border border-white/5 hover:border-blue-500/50 transition-colors group flex flex-col min-h-[500px] lg:min-h-0 relative overflow-hidden"
+            className="bg-neutral-900/50 rounded-3xl p-2 border border-white/5 hover:border-blue-500/50 transition-colors group flex flex-col min-h-[450px] lg:min-h-0 relative overflow-hidden flex-1"
           >
-            <div className="flex-1 bg-black/50 rounded-2xl p-8 flex flex-col items-center text-center overflow-hidden relative">
+            <div className="flex-1 bg-black/50 rounded-2xl p-6 lg:p-8 flex flex-col items-center text-center overflow-hidden relative">
               <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent opacity-50" />
 
-              <h3 className="text-3xl font-bold text-white mb-6 whitespace-nowrap">Student Journey</h3>
+              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-6 whitespace-nowrap">Student Journey</h3>
 
               {/* Image / Tablet representation */}
-              <div className="relative w-full max-w-sm aspect-[4/3] bg-neutral-800 rounded-xl mb-6 border border-neutral-700 overflow-hidden shadow-2xl shadow-blue-900/20 group-hover:scale-105 transition-transform duration-500 flex-shrink-0">
+              <div className="relative w-full max-w-[280px] lg:max-w-sm aspect-[4/3] bg-neutral-800 rounded-xl mb-6 border border-neutral-700 overflow-hidden shadow-2xl shadow-blue-900/20 group-hover:scale-105 transition-transform duration-500 flex-shrink-0">
                 <img
                   src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&q=80&w=800"
                   alt="Student Interface"
@@ -111,19 +119,19 @@ export const Solution: React.FC = () => {
           {/* Teacher View Side */}
           <motion.div
             layout
-            onMouseEnter={() => setHoverSide('teacher')}
-            onMouseLeave={() => setHoverSide(null)}
-            animate={{ width: typeof window !== 'undefined' && window.innerWidth >= 1024 ? teacherWidth : '100%' }}
+            onMouseEnter={() => isDesktop && setHoverSide('teacher')}
+            onMouseLeave={() => isDesktop && setHoverSide(null)}
+            animate={{ width: isDesktop ? teacherWidth : '100%' }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="bg-neutral-900/50 rounded-3xl p-2 border border-white/5 hover:border-gold-500/50 transition-colors group flex flex-col min-h-[500px] lg:min-h-0 relative overflow-hidden"
+            className="bg-neutral-900/50 rounded-3xl p-2 border border-white/5 hover:border-gold-500/50 transition-colors group flex flex-col min-h-[450px] lg:min-h-0 relative overflow-hidden flex-1"
           >
-            <div className="flex-1 bg-black/50 rounded-2xl p-8 flex flex-col items-center text-center overflow-hidden relative">
+            <div className="flex-1 bg-black/50 rounded-2xl p-6 lg:p-8 flex flex-col items-center text-center overflow-hidden relative">
               <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent opacity-50" />
 
-              <h3 className="text-3xl font-bold text-white mb-6 whitespace-nowrap">Teacher View</h3>
+              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-6 whitespace-nowrap">Teacher View</h3>
 
               {/* Image / Dashboard representation */}
-              <div className="relative w-full max-w-sm aspect-[4/3] bg-neutral-800 rounded-xl mb-6 border border-neutral-700 overflow-hidden shadow-2xl shadow-gold-900/20 group-hover:scale-105 transition-transform duration-500 flex-shrink-0">
+              <div className="relative w-full max-w-[280px] lg:max-w-sm aspect-[4/3] bg-neutral-800 rounded-xl mb-6 border border-neutral-700 overflow-hidden shadow-2xl shadow-gold-900/20 group-hover:scale-105 transition-transform duration-500 flex-shrink-0">
                 <img
                   src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
                   alt="Teacher Dashboard"
