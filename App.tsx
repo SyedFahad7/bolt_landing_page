@@ -10,8 +10,11 @@ import { Credibility } from './components/sections/Credibility';
 import { CTA } from './components/sections/CTA';
 import { CurvedMarqueeCTA } from './components/sections/CurvedMarqueeCTA';
 import { Footer } from './components/sections/Footer';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import SignPage from './src/app/sign';
+import { HOME_PAGE, SIGN_PAGE } from './constants/routes';
 
-const App: React.FC = () => {
+const LandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-gold-500 selection:text-black">
       <Navbar />
@@ -28,6 +31,16 @@ const App: React.FC = () => {
       </main>
       <div className="snap-end snap-always w-full"><Footer /></div>
     </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <Routes>
+      <Route path={HOME_PAGE} element={<LandingPage />} />
+      <Route path={SIGN_PAGE} element={<SignPage />} />
+      <Route path="*" element={<Navigate to={HOME_PAGE} replace />} />
+    </Routes>
   );
 };
 
