@@ -102,7 +102,7 @@ export const Problem: React.FC = () => {
   const tipY = hover ? Math.max(CY0 + 4, hover.c.y - tipH - 18) : 0;  // above Bolt line
 
   return (
-    <section id="problem" className="pt-8 pb-24 bg-black relative overflow-hidden min-h-screen flex flex-col justify-center">
+    <section id="problem" className="pt-8 pb-24 bg-black relative overflow-x-hidden min-h-screen flex flex-col justify-center">
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
 
         <BouncyCardsFeatures />
@@ -170,13 +170,16 @@ export const Problem: React.FC = () => {
               </div>
 
               {/* SVG Chart */}
-              <div className="px-6 pb-4 pt-2 overflow-x-auto scrollbar-hide" style={{ cursor: 'crosshair', WebkitOverflowScrolling: 'touch' }}>
+              <div
+                className="px-6 pb-4 pt-2 overflow-x-auto scrollbar-hide w-full min-w-0"
+                style={{ cursor: 'crosshair', WebkitOverflowScrolling: 'touch' }}
+              >
                 <svg
                   ref={svgRef}
                   viewBox={`0 0 ${VW} ${VH}`}
                   preserveAspectRatio="none"
-                  className="w-full min-w-[750px] lg:min-w-full"
-                  style={{ height: 280, overflow: 'visible' }}
+                  className="w-full min-w-0 h-[240px] sm:h-[280px] lg:min-w-[750px]"
+                  style={{ overflow: 'visible' }}
                   onMouseMove={handleMove}
                   onMouseLeave={handleLeave}
                 >

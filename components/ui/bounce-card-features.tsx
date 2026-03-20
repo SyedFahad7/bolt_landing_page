@@ -4,12 +4,12 @@ import { UserX, FileQuestion, EyeOff, PenTool, Trophy } from "lucide-react";
 
 export const BouncyCardsFeatures = () => {
     return (
-        <div className="w-full text-slate-800 pb-16">
-            <div className="mb-12 flex flex-col justify-center items-center text-center px-4 mt-12 md:mt-0">
-                <span className="text-xl md:text-3xl font-semibold text-neutral-300 mb-2">
+        <div className="w-full text-slate-800 pb-16 overflow-x-hidden">
+            <div className="mb-12 flex flex-col justify-center items-center text-center px-2 sm:px-4 mt-12 md:mt-0">
+                <span className="text-xl md:text-3xl font-semibold text-neutral-300 mb-2 break-words">
                     Teaching Abacus Online Isn't the Problem —
                 </span>
-                <h2 className="w-full text-3xl md:text-5xl font-bold text-gold-500 leading-tight max-w-5xl">
+                <h2 className="w-full text-3xl md:text-5xl font-bold text-gold-500 leading-tight max-w-5xl break-words whitespace-normal">
                     Student Practice is.
                 </h2>
             </div>
@@ -74,7 +74,7 @@ export const BouncyCardsFeatures = () => {
 
 
             {/* Mobile Fallback layout */}
-            <div className="md:hidden space-y-4 px-4">
+            <div className="md:hidden space-y-4 px-2 sm:px-4">
                 <div className="flex items-center gap-4 bg-neutral-900 p-4 rounded-xl border border-white/5">
                     <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-400 shrink-0">
                         <UserX className="w-6 h-6" />
@@ -129,7 +129,8 @@ export const BouncyCardsFeatures = () => {
 const BounceCard = ({ className, children }: { className?: string; children: React.ReactNode }) => {
     return (
         <motion.div
-            whileHover={{ scale: 1.05, y: -5 }}
+            // Keep hover effect subtle so it doesn't visually spill on small screens.
+            whileHover={{ scale: 1.03, y: -2 }}
             className={`relative cursor-pointer transition-all duration-300 ${className}`}
         >
             {children}
